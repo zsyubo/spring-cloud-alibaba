@@ -33,12 +33,22 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnNacosDiscoveryEnabled
 public class NacosDiscoveryAutoConfiguration {
 
+	/**
+	 * Nacos服务发现配置
+	 * @return
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public NacosDiscoveryProperties nacosProperties() {
 		return new NacosDiscoveryProperties();
 	}
 
+	/**
+	 * 服务发现客户端
+	 * @param discoveryProperties
+	 * @param nacosServiceManager
+	 * @return
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public NacosServiceDiscovery nacosServiceDiscovery(

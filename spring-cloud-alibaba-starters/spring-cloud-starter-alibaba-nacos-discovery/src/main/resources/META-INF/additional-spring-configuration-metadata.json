@@ -3,43 +3,43 @@
       "name": "spring.cloud.nacos.server-addr",
       "type": "java.lang.String",
       "defaultValue": "localhost:8848",
-      "description": "nacos server address."
+      "description": "nacos server address.  nacos 服务器地址"
     },
     {
       "name": "spring.cloud.nacos.discovery.server-addr",
       "type": "java.lang.String",
       "defaultValue": "${spring.cloud.nacos.server-addr}",
-      "description": "nacos discovery server address."
+      "description": "nacos discovery server address. 意义不明"
     },
     {
       "name": "spring.cloud.nacos.discovery.service",
       "type": "java.lang.String",
       "defaultValue": "${spring.application.name}",
-      "description": "the service name to register, default value is ${spring.application.name}."
+      "description": "the service name to register, default value is ${spring.application.name}.  服务名"
     },
     {
       "name": "spring.cloud.nacos.discovery.enabled",
       "type": "java.lang.Boolean",
       "defaultValue": true,
-      "description": "enable nacos discovery or not."
+      "description": "enable nacos discovery or not.  是否启用服务发现"
     },
     {
       "name": "spring.cloud.nacos.discovery.instance-enabled",
       "type": "java.lang.Boolean",
       "defaultValue": true,
-      "description": "If instance is enabled to accept request. The default value is true."
+      "description": "If instance is enabled to accept request. The default value is true. 如果实例能够接受请求。"
     },
     {
       "name": "spring.cloud.nacos.discovery.ephemeral",
       "type": "java.lang.Boolean",
       "defaultValue": true,
-      "description": "If instance is ephemeral.The default value is true."
+      "description": "If instance is ephemeral.The default value is true. 如果实例是短暂的。默认值为真。"
     },
     {
       "name": "spring.cloud.nacos.discovery.namingLoadCacheAtStart",
       "type": "java.lang.Boolean",
       "defaultValue": "false",
-      "description": "naming load from local cache at application start ."
+      "description": "naming load from local cache at application start .应用程序启动时从本地缓存加载命名。"
     },
     {
       "name": "spring.cloud.nacos.discovery.watch.enabled",
