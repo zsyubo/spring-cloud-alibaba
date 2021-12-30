@@ -40,6 +40,8 @@ public class NacosAutoServiceRegistration
 
 	private NacosRegistration registration;
 
+	// serviceRegistry: NacosServiceRegistry
+	// registration: NacosRegistration
 	public NacosAutoServiceRegistration(ServiceRegistry<Registration> serviceRegistry,
 			AutoServiceRegistrationProperties autoServiceRegistrationProperties,
 			NacosRegistration registration) {
@@ -66,6 +68,9 @@ public class NacosAutoServiceRegistration
 		return null;
 	}
 
+	/**
+	 * 当实例启动成功后,注册当前instance到注册中心
+	 */
 	@Override
 	protected void register() {
 		if (!this.registration.getNacosDiscoveryProperties().isRegisterEnabled()) {

@@ -43,6 +43,8 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 /**
+ * watch
+ *
  * @author xiaojing
  * @author yuhuangbin
  */
@@ -52,6 +54,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 
 	private Map<String, EventListener> listenerMap = new ConcurrentHashMap<>(16);
 
+	// 服务状态
 	private final AtomicBoolean running = new AtomicBoolean(false);
 
 	private final AtomicLong nacosWatchIndex = new AtomicLong(0);
@@ -106,6 +109,9 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 		callback.run();
 	}
 
+	/**
+	 * 去启动啰
+	 */
 	@Override
 	public void start() {
 		if (this.running.compareAndSet(false, true)) {
@@ -128,6 +134,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 			NamingService namingService = nacosServiceManager
 					.getNamingService(properties.getNacosProperties());
 			try {
+				// NacosNamingService
 				namingService.subscribe(properties.getService(), properties.getGroup(),
 						Arrays.asList(properties.getClusterName()), eventListener);
 			}

@@ -27,7 +27,7 @@ import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration
+ * 畸形ribbon的初始化配置 {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration
  * Auto-configuration} that sets up Ribbon for Nacos.
  */
 @Configuration(proxyBeanMethods = false)

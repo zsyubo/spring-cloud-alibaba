@@ -32,6 +32,8 @@ import com.alibaba.nacos.api.naming.pojo.ListView;
 import org.springframework.cloud.client.ServiceInstance;
 
 /**
+ * nacos client服务发现
+ *
  * @author <a href="mailto:echooy.mxq@gmail.com">echooymxq</a>
  **/
 public class NacosServiceDiscovery {
@@ -54,6 +56,11 @@ public class NacosServiceDiscovery {
 	 */
 	public List<ServiceInstance> getInstances(String serviceId) throws NacosException {
 		String group = discoveryProperties.getGroup();
+		// NacosNamingService
+		// com.alibaba.nacos.client.naming.NacosNamingService.selectInstances(java.lang.String,
+		// boolean)
+		// -->NacosNamingService.selectInstances(java.lang.String, java.lang.String,
+		// java.util.List<java.lang.String>, boolean, boolean)
 		List<Instance> instances = namingService().selectInstances(serviceId, group,
 				true);
 		return hostToServiceInstanceList(instances, serviceId);

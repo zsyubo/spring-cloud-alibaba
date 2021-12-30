@@ -20,6 +20,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 import com.alibaba.cloud.nacos.registry.NacosRegistration;
+import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingMaintainService;
 import com.alibaba.nacos.api.naming.NamingService;
@@ -35,6 +36,8 @@ import static com.alibaba.nacos.api.NacosFactory.createNamingService;
 import static org.springframework.beans.BeanUtils.copyProperties;
 
 /**
+ * 通过此类来获得NamingService
+ *
  * @author yuhuangbin
  */
 public class NacosServiceManager {
@@ -43,6 +46,7 @@ public class NacosServiceManager {
 
 	private NacosDiscoveryProperties nacosDiscoveryPropertiesCache;
 
+	// NacosNamingService
 	private NamingService namingService;
 
 	private NamingMaintainService namingMaintainService;
@@ -82,6 +86,9 @@ public class NacosServiceManager {
 		return namingMaintainService;
 	}
 
+	/**
+	 * 构建 NamingService
+	 */
 	private NamingService buildNamingService(Properties properties) {
 		if (Objects.isNull(namingService)) {
 			synchronized (NacosServiceManager.class) {
@@ -95,7 +102,7 @@ public class NacosServiceManager {
 
 	private NamingService createNewNamingService(Properties properties) {
 		try {
-			return createNamingService(properties);
+			return NacosFactory.createNamingService(properties);
 		}
 		catch (NacosException e) {
 			throw new RuntimeException(e);

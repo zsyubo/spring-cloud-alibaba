@@ -9,7 +9,7 @@
       "name": "spring.cloud.nacos.discovery.server-addr",
       "type": "java.lang.String",
       "defaultValue": "${spring.cloud.nacos.server-addr}",
-      "description": "nacos discovery server address. 意义不明"
+      "description": "nacos discovery server address. nacos服务发现地址"
     },
     {
       "name": "spring.cloud.nacos.discovery.service",
@@ -27,37 +27,37 @@
       "name": "spring.cloud.nacos.discovery.instance-enabled",
       "type": "java.lang.Boolean",
       "defaultValue": true,
-      "description": "If instance is enabled to accept request. The default value is true. 如果实例能够接受请求。"
+      "description": "If instance is enabled to accept request. The default value is true. 为true这表明这个实例正常接收调用"
     },
     {
       "name": "spring.cloud.nacos.discovery.ephemeral",
       "type": "java.lang.Boolean",
       "defaultValue": true,
-      "description": "If instance is ephemeral.The default value is true. 如果实例是短暂的。默认值为真。"
+      "description": "If instance is ephemeral.The default value is true. 注册为临时实例。Nacos分为临时实例和持久化实例"
     },
     {
       "name": "spring.cloud.nacos.discovery.namingLoadCacheAtStart",
       "type": "java.lang.Boolean",
       "defaultValue": "false",
-      "description": "naming load from local cache at application start .应用程序启动时从本地缓存加载命名。"
+      "description": "naming load from local cache at application start. 应用程序启动时使用本地的缓存，默认为false。"
     },
     {
       "name": "spring.cloud.nacos.discovery.watch.enabled",
       "type": "java.lang.Boolean",
       "defaultValue": "true",
-      "description": "enable nacos discovery watch or not ."
+      "description": "enable nacos discovery watch or not .客户端在启动时会创建一个线程池，该线程定期去查询服务端的信息列表。该请求不会立刻返回，默认等待30s，若在30s内，服务端信息列表发生变化，则该请求立刻返回，通知客户端拉取服务端的服务信息列表，若30s内，没有变化，则30s时该请求返回响应，客户端服务列表不变，再次发生该请求。\n注:推荐该功能为true，这是nacos类似长连接推送服务变化的功能，不要关闭"
     },
     {
       "name": "spring.cloud.nacos.discovery.username",
       "type": "java.lang.String",
       "defaultValue": "${spring.cloud.nacos.username}",
-      "description": "nacos discovery service's username to authenticate."
+      "description": "nacos discovery service's username to authenticate.  nacos授权的用户名"
     },
     {
       "name": "spring.cloud.nacos.discovery.password",
       "type": "java.lang.String",
       "defaultValue": "${spring.cloud.nacos.password}",
-      "description": "nacos discovery service's password to authenticate."
+      "description": "nacos discovery service's password to authenticate. nacos授权的密码"
     },
     {
       "name": "spring.cloud.nacos.username",

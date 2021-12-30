@@ -93,6 +93,8 @@ public class NacosDiscoveryProperties {
 	private String password;
 
 	/**
+	 * 服务的域名，通过该域名可以动态获取服务器地址。
+	 *
 	 * the domain name of a service, through which the server address can be dynamically
 	 * obtained.
 	 */
@@ -151,13 +153,15 @@ public class NacosDiscoveryProperties {
 	private boolean registerEnabled = true;
 
 	/**
+	 * 你想为你的服务实例注册的ip地址，不需要设置它，如果自动检测ip工作良好。 就是本服务实例的ip地址，这个很有用，特别是内网多网卡环境，用来指定自身ip的
+	 *
 	 * The ip address your want to register for your service instance, needn't to set it
 	 * if the auto detect ip works well.
 	 */
 	private String ip;
 
 	/**
-	 * which network interface's ip you want to register.
+	 * 指定次实例可供访问的网卡 你想注册哪个网络接口的IP。 which network interface's ip you want to register.
 	 */
 	private String networkInterface = "";
 
@@ -234,6 +238,7 @@ public class NacosDiscoveryProperties {
 		}
 
 		serverAddr = Objects.toString(serverAddr, "");
+		// 截取“/"之前的内容
 		if (serverAddr.endsWith("/")) {
 			serverAddr = serverAddr.substring(0, serverAddr.length() - 1);
 		}
@@ -241,12 +246,15 @@ public class NacosDiscoveryProperties {
 		namespace = Objects.toString(namespace, "");
 		logName = Objects.toString(logName, "");
 
+		// 如果ip是空的
 		if (StringUtils.isEmpty(ip)) {
+			// 如果没指定ip和网卡，那么就去拿第一个网卡的ip地址。
 			// traversing network interfaces if didn't specify a interface
 			if (StringUtils.isEmpty(networkInterface)) {
 				ip = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
 			}
 			else {
+				// 去拿网卡的ip
 				NetworkInterface netInterface = NetworkInterface
 						.getByName(networkInterface);
 				if (null == netInterface) {
