@@ -43,6 +43,7 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 /**
+ * 目前这个类主要是用于处理自定义心跳
  * watch
  *
  * @author xiaojing
@@ -111,6 +112,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 
 	/**
 	 * 去启动啰
+	 * 心跳处理
 	 */
 	@Override
 	public void start() {
@@ -142,6 +144,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 				log.error("namingService subscribe failed, properties:{}", properties, e);
 			}
 
+			// 30秒去发送一次心跳
 			this.watchFuture = this.taskScheduler.scheduleWithFixedDelay(
 					this::nacosServicesWatch, this.properties.getWatchDelay());
 		}
@@ -201,6 +204,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 	public void nacosServicesWatch() {
 
 		// nacos doesn't support watch now , publish an event every 30 seconds.
+		// 一个无效的发布时间，nacos的心跳处理并不在此处，在RpcClient中
 		this.publisher.publishEvent(
 				new HeartbeatEvent(this, nacosWatchIndex.getAndIncrement()));
 

@@ -92,6 +92,10 @@ public class NacosServiceRegistry implements ServiceRegistry<Registration> {
 		}
 	}
 
+	/**
+	 * 取消注册
+	 * @param registration
+	 */
 	@Override
 	public void deregister(Registration registration) {
 
