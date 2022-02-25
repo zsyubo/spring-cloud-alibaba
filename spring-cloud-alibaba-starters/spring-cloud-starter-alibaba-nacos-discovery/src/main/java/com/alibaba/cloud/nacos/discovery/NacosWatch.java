@@ -144,7 +144,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 				log.error("namingService subscribe failed, properties:{}", properties, e);
 			}
 
-			// 30秒去发送一次心跳
+			// 30秒去发送一次心跳， 目前没用
 			this.watchFuture = this.taskScheduler.scheduleWithFixedDelay(
 					this::nacosServicesWatch, this.properties.getWatchDelay());
 		}

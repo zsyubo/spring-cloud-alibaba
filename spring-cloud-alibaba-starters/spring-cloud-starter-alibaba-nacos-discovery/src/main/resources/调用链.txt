@@ -5,3 +5,4 @@ NacosDiscoveryClient#getInstances
             NamingFactory#createNamingService(java.util.Properties) --> 反射创建NacosNamingService对象
                 NacosNamingService#NacosNamingService(java.lang.String) NacosNamingService的构造方法
                 ......Nacos源码中的流程
+com.alibaba.nacos.api.naming.NamingService.selectInstances(java.lang.String, java.lang.String, boolean)
