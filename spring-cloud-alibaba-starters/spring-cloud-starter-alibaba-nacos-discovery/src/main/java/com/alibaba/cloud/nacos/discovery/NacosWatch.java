@@ -43,8 +43,7 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 /**
- * 目前这个类主要是用于处理自定义心跳
- * watch
+ * 目前这个类主要是用于处理自定义心跳 watch
  *
  * @author xiaojing
  * @author yuhuangbin
@@ -111,8 +110,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 	}
 
 	/**
-	 * 去启动啰
-	 * 心跳处理
+	 * 去启动啰 心跳处理
 	 */
 	@Override
 	public void start() {
@@ -136,7 +134,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 			NamingService namingService = nacosServiceManager
 					.getNamingService(properties.getNacosProperties());
 			try {
-				// NacosNamingService
+				//todo NacosNamingService ，这里面去注册Server端
 				namingService.subscribe(properties.getService(), properties.getGroup(),
 						Arrays.asList(properties.getClusterName()), eventListener);
 			}
