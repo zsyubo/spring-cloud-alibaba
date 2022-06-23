@@ -134,7 +134,7 @@ public class NacosWatch implements ApplicationEventPublisherAware, SmartLifecycl
 			NamingService namingService = nacosServiceManager
 					.getNamingService(properties.getNacosProperties());
 			try {
-				//todo NacosNamingService ，这里面去注册Server端
+				// todo NacosNamingService ，这里面去注册Server端
 				namingService.subscribe(properties.getService(), properties.getGroup(),
 						Arrays.asList(properties.getClusterName()), eventListener);
 			}
